@@ -9,8 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(features = "src/test/java/com/cucumber/tuts/cucmber/Features", 
 glue = "com.cucumber.tuts.cucmber.StepDefinitions",
 plugin = {"pretty", "html:target/results.html"},
-tags = "@login and (@valid or @invalid)",
-dryRun = false)
+publish = true)
 
 public class TestRunner {
 
