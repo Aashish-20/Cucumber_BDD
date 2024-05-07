@@ -8,19 +8,20 @@ pipeline {
             }
         }
     
-        stage('setup'){
+        stage('Clean'){
             steps{
                 bat 'mvn clean'
             }
         }
-        stage('test'){
+        stage('Test'){
             steps{
                 bat 'mvn test'
+                junit '**/target/surefire-reports/TEST-*.xml''
             }
         }
-        stage('Building'){
+        stage('Build'){
             steps{
-                bat 'mvn clean install -Dmaven.test.skip=true'
+                bat 'mvn clean install'
             }
         }
     }
