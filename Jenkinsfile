@@ -13,7 +13,7 @@ pipeline {
         stage('Test') {
             steps {
                 // bat "mvn test"
-                bat "mvn exec:java -Dexec.mainClass=com.cucumber.tuts.cucmber.TestRunner -Dexec.classpathScope=test"
+                bat "mvn test"
                 junit '*/target/surefire-reports/TEST-.xml'
             }
             post {
