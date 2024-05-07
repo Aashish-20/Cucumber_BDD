@@ -9,7 +9,7 @@
 	<name>cucmber</name>
 	<url>http://maven.apache.org</url>
 	<packaging>pom</packaging>
-<!--here-->	
+	<!--here-->
 	<build>
 		<plugins>
 			<plugin>
@@ -27,18 +27,43 @@
 				<version>3.2.5</version>
 				<configuration>
 					<includes>
-						<include>**/*TestRunner.java</include>
+						<exclude>**/*TestRunner.java</exclude>
 					</includes>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-maven-plugin</artifactId>
+				<version>6.9.1</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>test</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<tags>@login and (@valid or @invalid)</tags> <!-- Run
+							tests tagged with specified tags -->
+							<glue>com.cucumber.tuts.cucmber.StepDefinitions</glue> <!--
+							Specify package containing step definitions -->
+							<plugin>pretty</plugin>
+							<plugin>html:target/cucumber-reports</plugin> <!--
+							Generate HTML reports in target/cucumber-reports -->
+							<plugin>json:target/cucumber-reports/Cucumber.json</plugin> <!--
+							Generate JSON reports in target/cucumber-reports -->
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
 
 	</build>
-	
+
 	<!--to here-->
 
-	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
